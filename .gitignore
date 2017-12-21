@@ -1,0 +1,5 @@
+.idea
+_minted-main
+build
+*-converted-to.pdf
+__pycache__
