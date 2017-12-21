@@ -1,0 +1,136 @@
+% ______________________________________________________________________________
+%
+%   2DV610 Software Testing -- Assignment 2 Task 1
+%
+%   Author:  Jonas Sjöberg
+%            Linnaeus University
+%            js224eh@student.lnu.se
+%            github.com/jonasjberg
+%            www.jonasjberg.com
+%
+%  License:  Creative Commons Attribution 4.0 International (CC BY 4.0)
+%            <http://creativecommons.org/licenses/by/4.0/legalcode>
+%            See LICENSE.md for additional licensing information.
+% ______________________________________________________________________________
+
+
+\documentclass[11pt,a4paper]{article}
+
+
+\usepackage[utf8]{inputenc}
+\inputencoding{utf8}
+\usepackage[swedish,english]{babel}
+\usepackage[swedish]{isodate}
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern}
+\usepackage{fullpage}
+
+\usepackage{csquotes}
+\usepackage[natbib=true,
+            style=ieee,
+            backend=biber]{biblatex}
+\addbibresource{refs.bib}
+
+\usepackage[binary-units=true]{siunitx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+%\usepackage{microtype}
+
+
+\usepackage[pdfusetitle,
+            bookmarks=true,
+            bookmarksnumbered=true,
+            bookmarksopen=false,
+            breaklinks=false,
+            pdfborder={0 0 0},
+            backref=false,
+            colorlinks=false,
+            hidelinks]{hyperref}
+
+\usepackage{minted}
+\usemintedstyle{bw}
+
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+
+% Used to remove numbering of some sections.
+% \renewcommand*\thesection{\arabic{section}}
+
+\renewcommand\listingscaption{Listing}
+\renewcommand\listoflistingscaption{List of listings}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\usepackage{pdfpages}
+
+
+\title{\textsc{2DV610} \\
+       Software Testing \\
+       Assignment 2 --- Task 1
+}
+
+\author{
+  Jonas Sjöberg                          \\
+  860224-xxxx                            \\
+  Linnaeus University                    \\
+  \texttt{js224eh@student.lnu.se}        \\
+  \texttt{https://github.com/jonasjberg} \\
+  \texttt{http://www.jonasjberg.com}
+}
+
+% \setcounter{section}{-1}
+\date{}
+
+\begin{document}
+  \maketitle
+
+  \begin{center}
+    \begin{tabular}{l r}
+      Written during:      & \isodate\printdate{2017-12-21} -- \isodate\printdate{2017-12-23} \\
+      Teacher responsible: & Jesper Andersson \\
+                           & Ioseff Griffith
+                           & Sarpreet Singh
+    \end{tabular}
+  \end{center}
+
+  \begin{abstract}
+    The second assignment in the course \emph{2DV610 -- Software Testing}
+    at Linnaeus University during the autumn term of 2017.
+    This assignment involves formulating a testing strategy for a given
+    scenario, requirements and source code. It also involves writing a plan on
+    how the testing should be performed, manual test cases and finally
+    conducting the actual testing of the given source coe and presenting the
+    test results.
+  \end{abstract}
+
+  \clearpage
+  %\hypersetup{linkcolor=black}
+  \setcounter{tocdepth}{3}
+  \tableofcontents
+
+  \bigskip
+
+  %\listoffigures
+  %\listoftables
+  %\listoflistings
+
+
+  \input{test_strategy.tex}
+  \input{test_plan.tex}
+  \input{test_cases.tex}
+  \input{test_report.tex}
+
+
+  \addcontentsline{toc}{section}{References}
+  \printbibliography{}
+
+\end{document}
