@@ -18,12 +18,91 @@
 %
 % TODO: Write a test-strategy for the application.
 %
+%       Does the strategy describe..
+%
+%       * stakeholders and their testing goals?
+%       * the available resources?
+%       * how the stakeholders testing goals are to be fulfilled by the plan?
+
+This testing strategy is based on the scenario given in the assignment instructions.
+The scenario \cite{2dv610:assignment2-instructions} is stated as follows:
+
+\begin{quote}
+  The small Software Development Company (SDC) has found a possible market niche
+  for giving out a simple to deploy web-server. SDC aims to redistribute this
+  server on a wide range of Internet Of Things (IOT) to present information
+  from sensors etc. SDC wants an easy to deploy java-web-server that can be
+  deployed on many different devices and therefore that can attract attention
+  of a wide range of IOT developers. IOT-developers want minimal
+  configuration as well as easy integration and adaptation of the web-server.
+  End-customers want easy access and absolute security. The SDC management
+  has found an open source abandonware software called “My web server”. It is
+  your job as SDC employee(s) to evaluate the current state of “My web
+  server”. SDC needs to know if the abandoned software fulfills the
+  requirements as stated in the requirement document. Your budget is one
+  man-week times the number of students. SDC management want a strategy,
+  plan, test-cases as well as a test-report by the 23 December.
+\end{quote}
+
+\subsection{Stakeholders}
+The following stakeholders can be identified in the scenario:
+
+\begin{enumerate}
+    \item SDC management
+    \item SDC developers
+    \item IOT developers
+    \item End-customers
+\end{enumerate}
+
+Considering that the SDC management and SDC developers will have different
+primary testing requirements, I've chosen to list them separately.
 
 
-% Test Strategy
-%
-% Does the strategy describe..
-%
-% * stakeholders and their testing goals?
-% * the available resources?
-% * how the stakeholders testing goals are to be fulfilled by the plan?
+\subsection{Testing Goals}
+\subsubsection{SDC management}
+The goals and requirements of the SDC management will likely partially overlap
+that of the SDC developers.
+
+Management will probably appreciate if testing results and feedback is
+presented in a less \emph{technically dense} format. A possibility is providing
+test reports through a web interface, as an alternative to having the
+developers be the ``gatekeepers'' to test reports and related information.
+
+Technical specifics will not provide much insight to non-developers. Testing
+should rather indicate whether the project is on schedule, which parts of the
+project works and which does not work; a very high-level overview.
+
+
+\subsubsection{SDC developers}
+Developers will benefit from unit testing during refactoring and evaluation of
+the legacy system. Unit tests can be used to sanity-check application
+boundaries/interfaces and also provide insights when getting acquainted with
+the code base.
+
+A great number of testing techniques would be useful for developers given this
+specific task.  But the allocated time and budget means that some concessions
+must be made.
+
+Unit tests are pretty much a given, but additional system tests or integration
+tests are also required.
+The entire system should exercised in order to test the interactions between
+the units, covered by unit tests.
+
+Seeing as how the software is intended to be used in ``Internet of Things''
+applications, testing for security vulnerabilities will be very important.
+These kind of embedded systems are widely known to be insecure for a variety of
+reasons. \cite{iot-malwarebytes}
+
+In addition to unit tests and integration/system tests, some kind of
+``fuzzing'' or property-based testing \cite{hypothesis-testing} could be used
+to identify security vulnerabilities, at least some low-hanging fruit.
+
+% TODO: ..
+
+
+\subsubsection{IOT developers}
+% TODO: ..
+
+
+\subsubsection{End-customers}
+% TODO: ..
