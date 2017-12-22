@@ -35,7 +35,28 @@ The total set of requirements is those specified in the requirements document
 inferred from the scenario description text
 \cite{2dv610:assignment2-instructions}.
 
+Total set of stated requirements;
 \begin{enumerate}
-\item T
+  \item The web server should be responsive under high load.
+  \item The web server must follow minimum requirements for HTTP 1.1
+  \item The web server must work on Linux, Mac, Windows*.
+  \item The web server must be easy to deploy.
+  \item The web server must be easy to integrate into various systems.
+  \item The web server must not require complex configuration.
+  \item The web server must be absolutely secure.
+\end{enumerate}
+
+
+Not all of the requirements are testable or are likely to yield any actual
+value, even though they are testable; automated tools for determining how
+source code is licensed \emph{do} exist, but this is obviously not a priority
+in this case.
+
+The following requirements should be transformed into actual test cases;
+\begin{enumerate}
+  \item The web server should be responsive under high load. --- Stress tests, Smoke tests.
+  \item The web server must follow minimum requirements for HTTP 1.1 --- Unit tests, Integration/System tests.
+  \item The web server must work on Linux, Mac, Windows*. --- OS-specific Integration/System tests.
+  \item The web server must be absolutely secure. --- Fuzzing, Property-based tests, Penetration tests, Security Auditing.
 \end{enumerate}
 
