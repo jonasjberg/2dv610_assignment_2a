@@ -92,12 +92,32 @@ Seeing as how the software is intended to be used in ``Internet of Things''
 applications, testing for security vulnerabilities will be very important.
 These kind of embedded systems are widely known to be insecure for a variety of
 reasons. \cite{iot-malwarebytes}
+An \emph{absolutely secure} embedded system with a persistent internet
+connection (``IoT'' device) is practically an oxymoron. It is widely known that
+these kind of devices are easy targets for automated attacks due to the
+unavoidable practical aspects of the medium --- mass-produced single-purpose
+computers that most likely will not be properly maintained and updated.
+Mass-production have often led to re-used or low entropy encryption keys
+\cite{iot-crypto-key-reuse} and most people do not take the time to keep their
+``IoT'' devices updated \cite{iot-attack-waiting-to-happen}.
 
+With high security among the requirements for this type of product, basic
+security auditing should be part of the testing.
 In addition to unit tests and integration/system tests, some kind of
 ``fuzzing'' or property-based testing \cite{hypothesis-testing} could be used
 to identify security vulnerabilities, at least some low-hanging fruit.
 
-% TODO: ..
+In addition to this, manual or automated penetration testing of the web server
+would help to reveal obvious security flaws.
+To meet the requirement of \emph{absolute security}, security auditing should
+be done on the actual target platform and some of the software testing should
+also be performed with the software running on the actual target
+device\cite{6006307}.
+
+Assuming that the Java virtual machine is a perfect abstraction of the
+underlying hardware and ignoring any differences between JVM implementations,
+OS schedulers and a multitude of other factors; the SDC developers could settle
+with doing development and testing on a desktop PC.
 
 
 \subsubsection{IOT developers}
