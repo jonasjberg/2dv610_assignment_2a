@@ -24,3 +24,50 @@
 %
 % * Are the manual test-cases traceable to which requirement that is tested?
 % * Do each manual test-case describe, input and expected output? (when relevant)
+
+
+\subsection{Requirements}
+The following requirements should be transformed into actual test cases;
+\begin{enumerate}
+  \item The web server should be responsive under high load.
+        % Stress tests, Smoke tests.
+  \item The web server must follow minimum requirements for HTTP 1.1
+        % Unit tests, Integration/System tests.
+  \item The web server must work on Linux, Mac, Windows*.
+        % OS-specific Integration/System tests.
+  \item The web server must be absolutely secure.
+        % Fuzzing, Property-based tests, Penetration tests, Security Auditing.
+\end{enumerate}
+
+
+\subsection{Test Cases}
+\subsubsection{\texttt{UC1} --- Start Server}
+
+\begin{quote}
+Primary Actor: Administrator
+
+Postcondition: 
+* A web server has been started
+* A note in the access log was written, that the server was started
+
+Main scenario
+1. Starts when an administrator wants to start the server.
+2. System asks for socket port number and shared resource container 
+3. The administrator provides a socket port number and a shared resource container
+4. System starts a web server on the given port and presents that the server was started and writes a note in the access log.
+
+Alternate Scenarios
+
+* 4a. The web server could not be started due to socket was taken
+    1. System presents an error message: “Socket XX was taken” (XX is the socket number, Example “80”)
+    2. Exit Use Case
+
+* 4b. The web server could not be started due restriction on the shared resource container
+    1. System presents an error message: “No access to folder XX” (XX is the shared resource container provided, Example “\var\www”)
+    2. Exit Use Case
+
+* 4c. The access log could not be written to
+   1. System presents an error message. “Cannot write to server log file log.txt”
+   2. Exit Use Case
+
+\end{quote}

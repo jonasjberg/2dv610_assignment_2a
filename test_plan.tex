@@ -135,13 +135,22 @@ Writing the server code in (ostensibly platform-independent) Java does not
 change the fact that \emph{the hardware is the platform}\cite{mike-acton-three-big-lies}.
 
 
-\subsection{Test Plan}
-The current test plan is as follows;
+\subsection{Current Test Plan}
+These are the prioritized testing methods with corresponding requirement.
 
 \begin{enumerate}
-  \item Stress Tests --- be responsive under high load.
+  \item Stress Tests --- be responsive under high load
   \item Unit Tests --- follow minimum requirements for HTTP 1.1
-  \item Integration Tests --- must work on Linux, Mac, Windows*.
+  \item Integration Tests --- must work on Linux, Mac and Windows
 \end{enumerate}
 
-All testing will be performed on Linux (
+It is assumed that the Java run-time and libraries is a totally opaque,
+``non-leaky'' abstraction of the underlying operating system and hardware.
+I.E., the computer hardware and operating system is considered irrelevant for
+the time being.
+All testing and development is done on a system running Linux
+\texttt{4.4.0-104-generic x86_64} and Java SDK \texttt{OpenJDK 1.8.0_151}.
+
+
+\subsection{Activities}
+All responsibilities and tasks are assigned to the only available developer.
