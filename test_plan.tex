@@ -29,6 +29,8 @@
 % * how testing should be done? at what test-level?
 % * who should do different activities? (responsibilities)
 
+
+% ______________________________________________________________________________
 \subsection{Requirements}
 The total set of requirements is those specified in the requirements document
 \cite{2dv610:assignment2-requirements} as well as additional requirements
@@ -54,23 +56,92 @@ in this case.
 
 The following requirements should be transformed into actual test cases;
 \begin{enumerate}
-  \item The web server should be responsive under high load. --- Stress tests, Smoke tests.
-  \item The web server must follow minimum requirements for HTTP 1.1 --- Unit tests, Integration/System tests.
-  \item The web server must work on Linux, Mac, Windows*. --- OS-specific Integration/System tests.
-  \item The web server must be absolutely secure. --- Fuzzing, Property-based tests, Penetration tests, Security Auditing.
+  \item The web server should be responsive under high load.
+        % Stress tests, Smoke tests.
+  \item The web server must follow minimum requirements for HTTP 1.1
+        % Unit tests, Integration/System tests.
+  \item The web server must work on Linux, Mac, Windows*.
+        % OS-specific Integration/System tests.
+  \item The web server must be absolutely secure.
+        % Fuzzing, Property-based tests, Penetration tests, Security Auditing.
 \end{enumerate}
 
 
+
+% ______________________________________________________________________________
 \subsection{Mapping Requirements to Testing}
 \subsubsection{The web server should be responsive under high load}
---- Stress tests, Smoke tests.
+Testing of this requirement should be prioritized. Load testing clearly
+correlates to robustness which in turn is directly linked to security.
+
+Stress/smoke testing is a cost-efficient method that will provide a great deal
+of insight into the servers operational characteristics.
+
 
 \subsubsection{The web server must follow minimum requirements for HTTP 1.1}
---- Unit tests, Integration/System tests.
+Testing this requirement as a static quality could be done rather laboriously
+by writing test cases for the HTTP specification \cite{rfc2616}. This is not
+practically feasible given the allocated resources.
+
+It would probably be more suitable to verify the requirements by testing
+``dynamic qualities'' through integration/system testing, with test
+cases that mimic client behaviour using arbitrary HTTP requests, etc.
+The number of test cases would be extended as far as possible; with a
+theoretically ``maximally extended'' test suite being practically tantamount to
+fine-grained testing of the entire HTTP protocol specification.
+
 
 \subsubsection{The web server must work on Linux, Mac, Windows*}
---- OS-specific Integration/System tests.
+This requirement would be best implemented with OS-specific integration/system
+tests. Preferably based on automated testing in virtual machines.
+
+This places constraints on the tools used for testing. The given application
+and test code is both written in Java, which should run pretty much the same on
+all the target platforms.
+
+The target platform, being an embedded system, might have very limited
+available resources in terms of storage and computational overhead --- possibly
+to the point of thwarting delivering the test code and its dependencies
+(\texttt{Mockito}) bundled with the server. This must be taken into
+consideration in order to satisfy testing goals of all stakeholders.
+
+There are innumerable variants of embedded systems and we should inquire about
+the platform specifications or a range of probable characteristics in order to
+better plan for any in-system testing.
+
 
 \subsubsection{The web server must be absolutely secure}
---- Fuzzing, Property-based tests, Penetration tests, Security Auditing.
+Reducing security vulnerabilities and eliminating bugs are closely related; it
+is argued\cite{torvalds-security-morons} that ``security problems are just
+bugs'' \cite{torvalds-security-bugs} --- eliminating bugs will by definition
+reduce risks related to the security requirements, all testing will be related
+to this requirement.
 
+All previously mentioned tests are relevant here and addition to these, some
+specific testing could be employed. Examples of this is fuzzing and
+property-based tests, similar to functionality provided by \texttt{Mockito}.
+
+Even more security-centric testing techniques like penetration testing and
+similar security audits would be required to verify the ``absolute security''
+stated in the requirements. However, this is probably outside the scope of this
+assignment, given the allocated resources.
+
+As in the previous requirement, the characteristics of the target architecture
+should inform planning of in-system/integration tests.  The security
+requirement in particular, places extra emphasis on testing the software,
+running on the actual target system.
+
+Writing the server code in (ostensibly platform-independent) Java does not
+change the fact that \emph{the hardware is the platform}\cite{mike-acton-three-big-lies}.
+
+
+\subsection{Test Plan}
+The current test plan is as follows;
+
+\begin{enumerate}
+  \item Stress Tests --- be responsive under high load.
+  \item Unit Tests --- follow minimum requirements for HTTP 1.1
+  \item Integration Tests --- must work on Linux, Mac, Windows*.
+\end{enumerate}
+
+All testing will be performed on Linux (
